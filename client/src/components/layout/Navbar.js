@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { logoutUser } from '../../actions/authActions';
-import { clearCurrentProfile } from '../../actions/profileActions';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { logoutUser } from '../../actions/authActions'
+import { clearCurrentProfile } from '../../actions/profileActions'
 
 class Navbar extends Component {
   logout = e => {
-    e.preventDefault();
-    this.props.clearCurrentProfile();
-    this.props.logoutUser();
-  };
+    e.preventDefault()
+    this.props.clearCurrentProfile()
+    this.props.logoutUser()
+  }
 
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated, user } = this.props.auth
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
@@ -39,7 +39,7 @@ class Navbar extends Component {
           </a>
         </li>
       </ul>
-    );
+    )
 
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
@@ -54,7 +54,7 @@ class Navbar extends Component {
           </Link>
         </li>
       </ul>
-    );
+    )
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
         <div className="container">
@@ -75,7 +75,7 @@ class Navbar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/profiles">
                   {' '}
-                  Developers
+                  Friends
                 </Link>
               </li>
             </ul>
@@ -83,7 +83,7 @@ class Navbar extends Component {
           </div>
         </div>
       </nav>
-    );
+    )
   }
 }
 
@@ -91,13 +91,13 @@ Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   clearCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
-};
+}
 
 const mapStateToProps = state => ({
   auth: state.auth
-});
+})
 
 export default connect(
   mapStateToProps,
   { clearCurrentProfile, logoutUser }
-)(Navbar);
+)(Navbar)
